@@ -1,6 +1,10 @@
 local plugins =
 {
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     init = function()
       require("core.utils").lazy_load "nvim-treesitter"
