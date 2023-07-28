@@ -21,6 +21,17 @@ local plugins =
     end,
   },
   {
+    "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    opt = {
+      handlers = {}
+    },
+  },
+  {
     "mfussenegger/nvim-dap", -- debugger environment for nvim
     init = function()
       require("core.utils").load_mappings("dap")
@@ -104,11 +115,13 @@ local plugins =
     opts = {
       ensure_installed = {
         "clangd",
+        "clang-format",
+        "codelldb",
 --        "rust-analyzer",
         "gopls",
         "golines",
         "gofumpt",
-        "goimports_reviser",
+        "goimports-reviser",
         "delve", -- golang debugger
         "pyright",
         "mypy",

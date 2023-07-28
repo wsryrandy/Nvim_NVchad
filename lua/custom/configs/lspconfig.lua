@@ -4,7 +4,11 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 lspconfig.clangd.setup({
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    client.server_capabbilites.signatureHelpProvider = false
+    on_attach(client, bufnr)
+  end,
+
   capabilities = capabilities,
   filetypes = {"c", "cpp"},
   root_dir = lspconfig.util.root_pattern(

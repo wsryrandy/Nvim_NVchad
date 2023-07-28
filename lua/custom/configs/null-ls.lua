@@ -2,6 +2,7 @@ local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
+  event = "VeryLazy",
   sources = {
     -- go install mvdan.cc/gofumpt@latest
     -- go install -v github.com/incu6us/goimports-reviser/v3@latest
@@ -12,7 +13,8 @@ local opts = {
     null_ls.builtins.formatting.golines,
     null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.diagnostics.ruff,
-    null-ls.builtins.formatting.black,
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.clang_format,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
